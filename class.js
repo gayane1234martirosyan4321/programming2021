@@ -1,4 +1,4 @@
-class Grass {
+class LivingCreature {
     constructor(x, y) {
         this.x = x;
         this.y = y;
@@ -33,6 +33,9 @@ class Grass {
         return found;
 
     }
+}
+class Grass extends LivingCreature {
+    
 
     mult() {
         var empty = random(this.chooseCell(0))
@@ -50,24 +53,8 @@ class Grass {
 
 
 
-class Xotaker {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.index = 2;
-        this.energy = 10;
-        this.directions = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x - 1, this.y],
-            [this.x + 1, this.y],
-            [this.x - 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x + 1, this.y + 1]
-        ]
-    }
-
+class Xotaker extends LivingCreature {
+   
     getNewDirections() {
         this.directions = [
             [this.x - 1, this.y - 1],
@@ -82,19 +69,9 @@ class Xotaker {
     }
 
     chooseCell(character) {
-        this.getNewDirections()
-        var found = []
-        for (var i in this.directions) {
-            var x = this.directions[i][0]
-            var y = this.directions[i][1]
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == character) {
-                    found.push(this.directions[i])
-                }
-            }
-
-        }
-        return found;
+        this.getNewDirections();
+        return super.chooseCell(character);
+        
 
     }
 
@@ -156,23 +133,8 @@ class Xotaker {
 }
 
 
-class Gishatich {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.index = 3;
-        this.energy = 10;
-        this.directions = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x - 1, this.y],
-            [this.x + 1, this.y],
-            [this.x - 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x + 1, this.y + 1]
-        ];
-    }
+class Gishatich extends LivingCreature {
+    
     getNewDirection() {
         this.directions = [
             [this.x - 1, this.y - 1],
@@ -188,20 +150,8 @@ class Gishatich {
     }
 
     chooseCell(character) {
-        this.getNewDirection()
-        var found = [];
-        for (var i in this.directions) {
-            var x = this.directions[i][0];
-            var y = this.directions[i][1];
-
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == character) {
-                    found.push(this.directions[i]);
-                }
-            }
-
-        }
-        return found;
+        this.getNewDirection();
+        return super.chooseCell(character);
     }
     mult() {
         var empty = random(this.chooseCell(0))
@@ -258,10 +208,9 @@ class Gishatich {
     }
 }
 
-class Kerpar1 {
+class Kerpar1 extends LivingCreature {
     constructor(x, y) {
-        this.x = x;
-        this.y = y;
+        super(x,y);
         this.index = 4;
         this.energy = 15;
         
@@ -297,20 +246,8 @@ class Kerpar1 {
     }
 
     chooseCell(character) {
-        this.getNewDirection()
-        var found = [];
-        for (var i in this.directions) {
-            var x = this.directions[i][0];
-            var y = this.directions[i][1];
-
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == character) {
-                    found.push(this.directions[i]);
-                }
-            }
-
-        }
-        return found;
+        this.getNewDirection();
+        return super.chooseCell(character);
     }
     mult() {
         var empty = random(this.chooseCell(0))
@@ -382,10 +319,9 @@ class Kerpar1 {
 
 
 
-class Kerpar2 {
+class Kerpar2 extends LivingCreature {
     constructor(x, y) {
-        this.x = x;
-        this.y = y;
+        super(x,y);
         this.index = 5;
         this.energy = 10;
         
@@ -421,20 +357,8 @@ class Kerpar2 {
     }
 
     chooseCell(character) {
-        this.getNewDirection()
-        var found = [];
-        for (var i in this.directions) {
-            var x = this.directions[i][0];
-            var y = this.directions[i][1];
-
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == character) {
-                    found.push(this.directions[i]);
-                }
-            }
-
-        }
-        return found;
+        this.getNewDirection();
+        return super.chooseCell(character);
     }
     mult() {
         var empty = random(this.chooseCell(0))
