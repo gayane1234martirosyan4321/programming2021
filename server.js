@@ -15,7 +15,7 @@ server.listen(3000);
 
 //matrix
 
-var matrix = [];
+matrix = [];
 matrix = fillMatrix(50, 50)
 //console.log(matrix)
 function fillMatrix(n, m) {
@@ -27,7 +27,9 @@ function fillMatrix(n, m) {
             matrix[i].push(0)
         }
     }
+    console.log(fillMatrix)
     return matrix
+    
 }
 
 for (var a = 0; a < 400; a++) {
@@ -60,25 +62,20 @@ for (var e = 0; e < 240; e++) {
 }
 
 
-io.sockets.emit('send matrix', matrix)
 
 
-var grassArr = [];
-var xotakerArr = [];
-var gishatichArr = [];
-var kerpar1Arr = [];
-var kerpar2Arr = [];
-///////////???????????????
-Grass = require("./Grass")///////////???????????????
+ grassArr = [];
+ xotakerArr = [];
+ gishatichArr = [];
+ kerpar1Arr = [];
+ kerpar2Arr = [];
+var Grass = require("./Grass")
+var Xotaker = require("./GrassEater")
+var Gishatich = require("./Gishatich")
+var Kerpar1 = require("./Kerpar1")
+var Kerpar2 = require("./Kerpar2")
 
-Xotaker = require("./GrassEater")///////////???????????????
-Gishatich = require("./Gishatich")///////////???????????????
-Kerpar1 = require("./Kerpar1")///////////???????????????
-
-Kerpar2 = require("./Kerpar2")///////////???????????????
-///////////???????????????
-
-function createObject(matrix){
+function createObject(matrix) {
     for (var i = 0; i < matrix.length; i++) {
         for (var j = 0; j < matrix[i].length; j++) {
 
@@ -108,10 +105,10 @@ function createObject(matrix){
         }
 
     }
-    io.sockets.emit('send matrix', matrix)
+  
 }
 
-function game(){
+function game() {
     for (var i in grassArr) {
         grassArr[i].mult()
     }
@@ -145,13 +142,33 @@ function game(){
         kerpar2Arr[i].die()
     }
 
-    io.sockets.emit("send matrix", matrix);
+    var data = {
+		"matrix": matrix
+		
+	};
+
+    io.sockets.emit("send matrix", data);
 
 }
+
 
 setInterval(game, 1000)
 
 
 io.on('connection', function (socket) {
-    createObject(matrix)
+    
 })
+createObject(matrix)
+// max արժեքը ընդգրկված չէ, իսկ min արժեքը ընգրկված է
+function getRandomInt(min, max) {
+	min = Math.ceil(min);
+	max = Math.floor(max);
+	return Math.floor(Math.random() * (max - min) + min);
+}
+
+// Վերադդարձնում է պատահական էլեմենտ զանգվածի մեջից
+getRandomArrayElement = function(arr) {
+	let randomIndex = Math.floor(Math.random() * arr.length);
+	let randomElement = arr[randomIndex];
+	return randomElement;
+}

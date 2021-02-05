@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/gayane1234martirosyan4321/programming2021#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "socket.io": "^3.1.1"
   }
 }

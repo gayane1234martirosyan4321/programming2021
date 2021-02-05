@@ -6,11 +6,11 @@ var side = 20;
 
 function setup() {
     frameRate(3);
-    createCanvas(matrix[0].length * side, matrix.length * side);
+    createCanvas(50 * side, 50 * side);
     background('#acacac'); 
 }
-function nkarel() {
-
+function nkarel(data) {
+    var matrix = data.matrix; 
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
 
@@ -38,11 +38,13 @@ function nkarel() {
 
         }
     }
+    console.log(matrix);
+    
 
 }
 
-setInterval(
-    function () {
-    socket.on('send matrix', nkarel)
-    },1000
-)
+
+    socket.on('send matrix', nkarel);
+  
+
+

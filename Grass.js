@@ -1,10 +1,10 @@
 let LivingCreature = require('./LivingCreature')
 
-class Grass extends LivingCreature {
+module.exports = class Grass extends LivingCreature {
     
 
     mult() {
-        var empty = random(this.chooseCell(0))//randomը չեմ փոխել p5 գրադարանը չկա
+        var empty = getRandomArrayElement(this.chooseCell(0))//randomը չեմ փոխել p5 գրադարանը չկա
         this.multiply++
         if (empty && this.multiply > 3) {
             var newX = empty[0]

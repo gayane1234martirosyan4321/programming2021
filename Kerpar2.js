@@ -44,7 +44,7 @@ module.exports = class Kerpar2 extends LivingCreature {
         return super.chooseCell(character);
     }
     mult() {
-        var empty = random(this.chooseCell(0))
+        var empty = getRandomArrayElement(this.chooseCell(0))
         if (empty && this.energy > 14) {
             var x = empty[0]
             var y = empty[1]
@@ -56,7 +56,7 @@ module.exports = class Kerpar2 extends LivingCreature {
 
     }
     move() {
-        var empty = random(this.chooseCell(0))
+        var empty = getRandomArrayElement(this.chooseCell(0))
 
         if (empty) {
             var x = empty[0]
@@ -72,7 +72,7 @@ module.exports = class Kerpar2 extends LivingCreature {
         var food1 = this.chooseCell(4);
         var food2 = this.chooseCell(3);
         var food = food1.concat(food2);
-        var uteliq = random(food)
+        var uteliq = getRandomArrayElement(food)
 
         if (uteliq) {
             var x = uteliq[0]
